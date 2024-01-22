@@ -1,16 +1,32 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Header from "./Header";
+import { checkValidData } from "../utils/validate";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  const name = useRef(null);
+  const email = useRef(null);
+  const password = useRef(null);
 
   const toggleSignInForm = () => {
     setIsSignInForm(!isSignInForm);
   };
 
+  const handleSubmit = () => {
+    const message = checkValidData(
+      email.current.value,
+      password.current.value,
+      name.current.value
+    );
+    setErrorMessage(message);
+  };
+
   return (
     <div>
       <Header />
+
       <div className="absolute h-screen w-screen">
         <img
           className="h-screen w-screen"
@@ -18,28 +34,39 @@ const Login = () => {
           alt="bg-logo"
         />
       </div>
-      <form className="w-1/3 absolute p-12 bg-black my-32 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80">
+
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="w-1/3 absolute p-12 bg-black my-32 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80"
+      >
         <h1 className="font-bold text-3xl pb-6">
           {isSignInForm ? "Sign In" : "Sign Up"}{" "}
         </h1>
         {!isSignInForm && (
           <input
+            ref={name}
             type="text"
             placeholder="Full Name"
             className="p-4 my-2 w-full bg-zinc-700 rounded-md outline-none hover:bg-zinc-600"
           />
         )}
         <input
+          ref={email}
           type="text"
           placeholder="Email Id"
           className="p-4 my-2 w-full bg-zinc-700 rounded-md outline-none hover:bg-zinc-600"
         />
         <input
+          ref={password}
           type="password"
           placeholder="Password"
           className="p-4 my-2 w-full bg-zinc-700 rounded-md outline-none hover:bg-zinc-600"
         />
-        <button className="p-4 my-6 bg-[#e50914] w-full rounded-lg font-semibold hover:bg-red-700">
+        <p className="text-red-500 font-semibold py-2">{errorMessage}</p>
+        <button
+          className="p-4 my-6 bg-[#e50914] w-full rounded-lg font-semibold hover:bg-red-700"
+          onClick={handleSubmit}
+        >
           {isSignInForm ? "Sign in" : "Sign up"}
         </button>
         {isSignInForm ? (
