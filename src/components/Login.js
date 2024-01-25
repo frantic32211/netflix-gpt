@@ -20,12 +20,26 @@ const Login = () => {
   };
 
   const handleSubmit = () => {
-    const message = checkValidData(
-      email.current.value,
-      password.current.value,
-      name.current.value
-    );
-    setErrorMessage(message);
+    if (name.current) {
+      // signup page
+
+      if (name.current.value == "") {
+        var message = "Please enter Full Name";
+        setErrorMessage(message);
+        return;
+      }
+      var message = checkValidData(
+        email.current.value,
+        password.current.value,
+        name.current.value
+      );
+      setErrorMessage(message);
+    } else {
+      // sign in page
+
+      var message = checkValidData(email.current.value, password.current.value);
+      setErrorMessage(message);
+    }
 
     if (message) return;
 
@@ -44,7 +58,7 @@ const Login = () => {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          setErrorMessage(errorCode + " -- " + errorMessage);
+          setErrorMessage(errorCode + " -:- " + errorMessage);
         });
     } else {
       signInWithEmailAndPassword(
@@ -59,7 +73,7 @@ const Login = () => {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          setErrorMessage(errorCode + " -- " + errorMessage);
+          setErrorMessage(errorCode + " -:- " + errorMessage);
         });
     }
   };
