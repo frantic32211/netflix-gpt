@@ -14,7 +14,7 @@ function App() {
   // This API acts as a event listener for the user in our app, and this needs to be done only once
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in
         const { uid, email, displayName, photoURL } = user;
@@ -33,6 +33,9 @@ function App() {
         navigate("/");
       }
     });
+
+    // unsubscribe when component unmounts
+    return () => unsubscribe();
   }, []);
 
   return (

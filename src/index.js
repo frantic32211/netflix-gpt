@@ -8,6 +8,7 @@ import appStore from "./utils/appStore";
 import App from "./App";
 import Login from "./components/Login";
 import Browse from "./components/Browse";
+import Error from "./components/Error";
 
 const appRouter = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ const appRouter = createBrowserRouter([
         element: <Browse />,
       },
     ],
+    errorElement: <Error />,
   },
 ]);
 

@@ -9,6 +9,7 @@ import {
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { NETFLIX_BG_IMG, USER_IMG } from "../utils/constants";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -58,13 +59,14 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
+          console.log(user);
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL:
-              "https://occ-0-6071-3646.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABXz4LMjJFidX8MxhZ6qro8PBTjmHbxlaLAbk45W1DXbKsAIOwyHQPiMAuUnF1G24CLi7InJHK4Ge4jkXul1xIW49Dr5S7fc.png",
+            photoURL: USER_IMG,
           })
             .then(() => {
               // Profile update
+              console.log(auth.currentUser);
               const { uid, email, displayName, photoURL } = auth.currentUser;
               dispatch(
                 addUser({
@@ -109,11 +111,7 @@ const Login = () => {
       <Header />
 
       <div className="absolute h-screen w-screen">
-        <img
-          className="h-screen w-screen"
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/16006346-87f9-4226-bc25-a1fb346a2b0c/9662d0fd-0547-4665-b887-771617268815/IN-en-20240115-popsignuptwoweeks-perspective_alpha_website_large.jpg"
-          alt="bg-logo"
-        />
+        <img className="h-screen w-screen" src={NETFLIX_BG_IMG} alt="bg-logo" />
       </div>
 
       <form
