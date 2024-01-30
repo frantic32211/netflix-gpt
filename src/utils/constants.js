@@ -6,3 +6,5 @@ export const NETFLIX_BG_IMG =
 
 export const USER_IMG =
   "https://occ-0-6071-3646.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABXz4LMjJFidX8MxhZ6qro8PBTjmHbxlaLAbk45W1DXbKsAIOwyHQPiMAuUnF1G24CLi7InJHK4Ge4jkXul1xIW49Dr5S7fc.png";
+
+export const API_OPTIONS = {};
