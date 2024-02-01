@@ -26,7 +26,10 @@ const Header = () => {
             src={user?.photoURL}
             alt="profile-logo"
           />
-          <button className="text-lg font-bold" onClick={handleSignOut}>
+          <button
+            className="text-lg font-bold hover:text-neutral-400"
+            onClick={handleSignOut}
+          >
             Signout
           </button>
         </div>
