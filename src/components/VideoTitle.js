@@ -1,6 +1,6 @@
 const VideoTitle = ({ title, overview }) => {
   return (
-    <div className="pt-48 px-12 absolute text-white  ">
+    <div className="pt-48 px-12 absolute text-white">
       <h1 className="text-4xl font-bold w-1/4">{title}</h1>
 
       <p className="my-6 w-1/4 line-clamp-4 font-semibold">{overview}</p>
