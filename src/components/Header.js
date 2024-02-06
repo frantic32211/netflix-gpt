@@ -1,7 +1,7 @@
 import { signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useDispatch, useSelector } from "react-redux";
-import { NETFLIX_LOGO } from "../utils/constants";
+import { NETFLIX_LOGO, SUPPORTED_LANGUAGES } from "../utils/constants";
 import { toggleGptSearchPage } from "../utils/GptSlice";
 
 const Header = () => {
@@ -27,8 +27,16 @@ const Header = () => {
       <img className="w-48" src={NETFLIX_LOGO} alt="netflix-logo" />
       {user && (
         <div className="flex">
+          <select className="px-2 my-4 bg-neutral-600 text-white rounded-lg">
+            {SUPPORTED_LANGUAGES.map((lang) => (
+              <option value={lang.identifier} key={lang.identifier}>
+                {lang.name}
+              </option>
+            ))}
+          </select>
+
           <button
-            className="py-2 px-4 my-4 mx-6 bg-purple-800 text-white font-semibold rounded-lg"
+            className="py-2 px-4 my-4 mx-6 bg-purple-800 text-white font-semibold rounded-lg hover:bg-purple-900"
             onClick={handleGptSearchCLick}
           >
             GPT Search

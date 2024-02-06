@@ -7,4 +7,21 @@ export const NETFLIX_BG_IMG =
 export const USER_IMG =
   "https://occ-0-6071-3646.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABXz4LMjJFidX8MxhZ6qro8PBTjmHbxlaLAbk45W1DXbKsAIOwyHQPiMAuUnF1G24CLi7InJHK4Ge4jkXul1xIW49Dr5S7fc.png";
 
+export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500";
+
+export const YOUTUBE_URL_1 = "https://www.youtube.com/embed/";
+
+export const YOUTUBE_URL_2 = "?&autoplay=1&mute=1&loop=1&playlist=";
+
+export const SUPPORTED_LANGUAGES = [
+  { identifier: "en", name: "English" },
+  { identifier: "hi", name: "Hindi" },
+  { identifier: "te", name: "Telugu" },
+  { identifier: "ta", name: "Tamil" },
+  { identifier: "ml", name: "Malayalam" },
+  { identifier: "kn", name: "Kannada" },
+  { identifier: "mr", name: "Marathi" },
+  { identifier: "gu", name: "Gujarati" },
+];
+
 export const API_OPTIONS = {};
