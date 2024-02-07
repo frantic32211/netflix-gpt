@@ -6,7 +6,7 @@ const GptSearch = () => {
   return (
     <div>
       <div className="absolute h-screen w-screen -z-10">
-        <img className="h-screen w-screen" src={NETFLIX_BG_IMG} alt="bg-logo" />
+        <img className="h-screen w-screen filter brightness-75" src={NETFLIX_BG_IMG} alt="bg-logo" />
       </div>
       <GptSearchCard />
       <GptMovieSuggestion />
