@@ -33,16 +33,16 @@ const GptSearchCard = () => {
       model: "gpt-3.5-turbo",
     });
 
-    if (
-      gptResults.choices?.[0]?.message?.content.match(/^(Sorry|Unfortunately)/g)
-    )
-      return (
-        <div className="bg-black bg-opacity-80">
-          <h1 className="p-4 text-white text-3xl font-semibold">
-            No results found
-          </h1>
-        </div>
-      );
+    // if (
+    //   gptResults.choices?.[0]?.message?.content.match(/^(Sorry|Unfortunately)/g)
+    // )
+    //   return (
+    //     <div className="bg-black bg-opacity-80">
+    //       <h1 className="p-4 text-white text-3xl font-semibold">
+    //         No results found
+    //       </h1>
+    //     </div>
+    //   );
 
     // DummyResult = Andaz Apna Apna, Hera Pheri, Golmaal: Fun Unlimited, 3 Idiots, Fukrey
 
@@ -50,7 +50,6 @@ const GptSearchCard = () => {
 
     const gptMovies = gptResults.choices?.[0]?.message?.content.split(", ");
 
-    console.log(gptMovies);
     // For each movie, search on TMDB API
 
     const movieData = gptMovies.map((movie) => searchMovieTmdb(movie));
@@ -58,8 +57,6 @@ const GptSearchCard = () => {
     // movieData will return array of 5 Promises (unresolved), because of async functionality of searchMovieTmdb
 
     const TmdbResults = await Promise.all(movieData);
-
-    console.log(TmdbResults);
 
     dispatch(
       addGptMovieResult({ movieNames: gptMovies, movieResult: TmdbResults })
