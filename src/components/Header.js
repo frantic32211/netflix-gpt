@@ -35,7 +35,7 @@ const Header = () => {
         <div className="flex">
           {showGptSearch && (
             <select
-              className="px-3 my-4 bg-zinc-600 text-white rounded-lg"
+              className="px-3 my-4 bg-zinc-600 text-white rounded-lg hover:bg-zinc-700 cursor-pointer"
               onChange={handleLanguageChange}
             >
               {SUPPORTED_LANGUAGES.map((lang) => (
