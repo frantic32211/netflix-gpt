@@ -24,6 +24,10 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "gu", name: "Gujarati" },
 ];
 
-export const API_OPTIONS = {};
-
-export const OPENAI_KEY = "";
+export const API_OPTIONS = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization: "Bearer " + process.env.REACT_APP_TMDB_TOKEN,
+  },
+};

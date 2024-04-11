@@ -28,7 +28,7 @@ const Login = () => {
     if (name.current) {
       // signup page
 
-      if (name.current.value == "") {
+      if (name.current.value === "") {
         var message = "Please enter Full Name";
         setErrorMessage(message);
         return;
